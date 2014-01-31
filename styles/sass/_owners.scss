@@ -1,6 +1,6 @@
 @import "compass/css3/box-shadow";
 
-@import "global";
+@import "site";
 .result {
 
   .form-label {
@@ -24,24 +24,5 @@
       background: #3D3D3D;
       color: #EEE;
     }
-  }
-}
-.archive {
-  background: #FFF;
-  display: inline-block;
-  padding: 2rem;
-  margin: 2rem;
-  vertical-align: top;
-  cursor: pointer;
-  height: 12rem;
-
-  @include box-shadow(#949698 3px 3px 5px -2px);
-
-  .archive-img {
-    display: inline-block;
-  }
-  .desc {
-    display: inline-block;
-    vertical-align: top;
   }
 }

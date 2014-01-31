@@ -1,0 +1,40 @@
+.left {
+  display: inline-block;
+  width: 70%;
+  vertical-align: top;
+
+  .list {
+    width: 100%;
+  }
+}
+
+.right {
+  display: inline-block;
+  width: 24.5%;
+  padding: 2rem;
+  vertical-align: top;
+  background: #FFF;
+  border: 1px solid $gray;
+
+  .details {
+    width: 100%;
+    height: 20rem;
+    display: inline-block;
+
+    #map-canvas {
+      width: 100%;
+      height: 20rem;
+      margin-bottom: 2rem;
+    }
+
+    .manage-button {
+      background: $orange;
+      border: 0;
+      height: 2rem;
+      color: #FFF;
+      border-radius: .3rem;
+      float: right;
+      margin-top: 1rem;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 [{
     "name": "Wellington",
-    "address": "123 Test St.",
+    "address": "Wellington Cemetery",
     "city": "Wellington",
     "state": "Utah",
     "zip": "84542",
@@ -8,10 +8,10 @@
     "occupied": "500"
 },{
     "name": "Pioneer",
-    "address": "345 Test St.",
+    "address": "200 N Street",
     "city": "Salt Lake",
     "state": "Utah",
-    "zip": "84001",
+    "zip": "84103",
     "capacity": "20000",
     "occupied":"18000"
 }]

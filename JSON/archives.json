@@ -1,6 +1,6 @@
 [{
     "name": "Cemetery",
-    "url": "#/cemetery",
+    "url": "#/cemeteries",
     "desc": "<div><ul><li>Manage Cemetery Plots</li><li>Schedule Interments</li></ul></div>",
     "imgUrl": "/styles/resources/cemetery.png"
 },{

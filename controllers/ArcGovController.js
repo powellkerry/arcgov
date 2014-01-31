@@ -6,9 +6,9 @@ app.config(function($routeProvider) {
             controller: 'HomeController',
             templateUrl: '/views/home.html'
         }).
-        when('/cemetery', {
-            controller: 'CemeteryController',
-            templateUrl: '/views/cemetery.html'
+        when('/cemeteries', {
+            controller: 'CemeteriesController',
+            templateUrl: '/views/cemeteries.html'
         }).
         when('/owners', {
             controller: 'OwnersController',

@@ -1,0 +1,28 @@
+<span class="cemetery">
+    <h1 class="page-name">Cemetery</h1>
+    <div class="body">
+        <div class="left">
+            <table class="list">
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Availability</th>
+                </tr>
+                <tr class="row" ng-repeat="cemetery in cemeteries" ng-click="loadCemeteryMap(cemetery)">
+                    <td>{{cemetery.name}}</td>
+                    <td>{{cemetery.address}}<br/>{{cemetery.city}}, {{cemetery.state}} {{cemetery.zip}}</td>
+                    <td>{{cemetery.occupied}}/{{cemetery.capacity}}-{{cemetery.occupied/cemetery.capacity| percentage}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="right">
+            <div class="details">
+                <div class="header">
+                    <h2>{{cemetery.name}}</h2>
+                    <input type="button" class="manage-button" value="Manage"/>
+                </div>
+                <div id="map-canvas"></div>
+            </div>
+        </div>
+    </div>
+</span>
