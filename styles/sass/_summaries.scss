@@ -1,0 +1,47 @@
+@import "compass/css3/box-shadow";
+
+@import "global";
+.result {
+
+  .form-label {
+    @extend .form-label;
+    color: #333;
+  }
+
+  .field-result {
+    display: inline-block;
+  }
+  .owner {
+    display: inline-block;
+    width: 15rem;
+    background: #D1D1D1;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: .2rem;
+    color: #464646;
+
+    &.selected, &:hover {
+      background: #3D3D3D;
+      color: #EEE;
+    }
+  }
+}
+.archive {
+  background: #FFF;
+  display: inline-block;
+  padding: 2rem;
+  margin: 2rem;
+  vertical-align: top;
+  cursor: pointer;
+  height: 12rem;
+
+  @include box-shadow(#949698 3px 3px 5px -2px);
+
+  .archive-img {
+    display: inline-block;
+  }
+  .desc {
+    display: inline-block;
+    vertical-align: top;
+  }
+}

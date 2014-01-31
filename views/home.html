@@ -1,0 +1,5 @@
+<div class="archive" ng-repeat = "archive in archives" ng-click="routeToArchive(archive)">
+    <h1>{{archive.name}}</h1>
+    <img class="archive-img" src="{{archive.imgUrl}}"/>
+    <div class="desc" ng-bind-html="getArchiveDescription(archive)"></div>
+</div>

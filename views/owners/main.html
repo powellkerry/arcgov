@@ -1,0 +1,57 @@
+<div>
+    <add-edit-owner-form>
+        <div class="toolbar">
+            <span class="add-owner" ng-click = "addOwnerClick()">Add</span>
+            <span class="edit-owner" ng-click = "editOwnerClick()">Edit</span>
+            <span class="delete-owner" ng-click= "deleteOwnerClick()">Delete</span>
+        </div>
+
+        <div name="owner" class="form popout" id="addEditForm">
+            <form autocomplete="on">
+                <fieldset class="group">
+                    <legend>Add Owner</legend>
+                    <div class="field">
+                        <div class="form-label">Name:</div>
+                        <input type="text" name="name" ng-model="owner.name" autocomplete="on"/>
+                    </div>
+
+                    <div class="field">
+                        <div class="form-label">Address:</div>
+                        <input type="text" name="street" ng-model="owner.street" autocomplete="on"/>
+                    </div>
+                    <div class="field">
+                        <div class="form-label">City:</div>
+                        <input class="city" name="city" type="text" ng-model="owner.city" autocomplete="on"/>
+                    </div>
+                    <div class="field">
+                        <div class="form-label">State:</div>
+                        <select class="state" name="state" ng-model="owner.state" ng-controller="StatesController" >
+                            <option ng-repeat="state in states" value="{{state.abbreviation}}">{{state.abbreviation}}</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <div class="form-label">Zip:</div>
+                        <input class="zip" name="zip" type="text" ng-model="owner.zip" autocomplete="on"/>
+                    </div>
+                    <div class="form-buttons">
+                        <input type="submit" value="Save" id="submit" ng-click="submit()"/>
+                        <button value="cancel" ng-click="cancel()">Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </add-edit-owner-form>
+    <div class="result">
+        <div class="owner" ng-repeat="owner in owners" ng-click="selectOwner(owner, $event)">
+            <div>{{owner.name}}</div>
+            <div>{{owner.street}}</div>
+            <div>
+                <span>{{owner.city}}</span>
+                <span>{{owner.state}}</span>
+                <span>{{owner.zip}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+

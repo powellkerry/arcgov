@@ -1,0 +1,18 @@
+@import "global";
+
+.address {
+  .form-label {
+    @extend .form-label;
+    width: 0 !important;
+  }
+  input {
+    @extend input;
+
+    &.state {
+      width: 2rem;
+    }
+    &.zip {
+      width: 3rem;
+    }
+  }
+}

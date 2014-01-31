@@ -1,0 +1,18 @@
+.form-buttons {
+  width: 100%;
+  text-align: right;
+}
+
+input[type=submit] {
+  height: 2rem;
+  width: 3rem;
+  background: #50915B;
+  color: #FFF;
+}
+button[value=cancel] {
+  height: 2rem;
+  border-radius: 0.3rem;
+  border: none;
+  background: #C94B4B;
+  color: #FFFFFF;
+}

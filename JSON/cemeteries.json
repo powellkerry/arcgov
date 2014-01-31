@@ -1,0 +1,17 @@
+[{
+    "name": "Wellington",
+    "address": "123 Test St.",
+    "city": "Wellington",
+    "state": "Utah",
+    "zip": "84542",
+    "capacity": "1300",
+    "occupied": "500"
+},{
+    "name": "Pioneer",
+    "address": "345 Test St.",
+    "city": "Salt Lake",
+    "state": "Utah",
+    "zip": "84001",
+    "capacity": "20000",
+    "occupied":"18000"
+}]

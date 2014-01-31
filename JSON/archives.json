@@ -1,0 +1,21 @@
+[{
+    "name": "Cemetery",
+    "url": "#/cemetery",
+    "desc": "<div><ul><li>Manage Cemetery Plots</li><li>Schedule Interments</li></ul></div>",
+    "imgUrl": "/styles/resources/cemetery.png"
+},{
+    "name": "Licenses",
+    "url": "#/licenses",
+    "desc": "<div><ul><li>Issue Licenses</li><li>Search Licenses</li></ul></div>",
+    "imgUrl": "/styles/resources/license.png"
+}, {
+    "name": "Permits",
+    "url": "#/permits",
+    "desc": "<div><ul><li>Issue Permits</li><li>Search Permits</li></ul></div>",
+    "imgUrl": "/styles/resources/permit.png"
+}, {
+    "name": "Utilities",
+    "url": "#/utilites",
+    "desc": "<div><ul><li>Register Customers</li><li>Bill Customers</li><li>Collect Payments</li></li></ul></div>",
+    "imgUrl": "/styles/resources/utility.png"
+}]

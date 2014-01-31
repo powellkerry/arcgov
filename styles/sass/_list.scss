@@ -1,0 +1,19 @@
+.list {
+  background: #FFF;
+  margin: 2rem;
+  padding: 1rem;
+
+  .row {
+    border-bottom: 1px solid $orange;
+    padding: 1rem;
+
+    div {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+  .row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
