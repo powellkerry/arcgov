@@ -1,32 +1,56 @@
 @import "compass/css3/box-shadow";
 .list {
-  background: #FFF;
-  border: 1px solid $gray;
-
-  th {
-    border-bottom: 2px solid $orange;
-    font-weight: normal;
-    text-align: left;
-    text-transform: uppercase;
-    padding: 1rem;
-    background: #FFF;
-    color: #888;
-  }
-
-  tr td {
-    border-bottom: 1px solid $gray;
-    padding: 1rem;
-    border-collapse: collapse;
-    cursor: pointer;
-  }
-  tr:nth-child(even) {
-    background: #F5F5F5;
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  tr:hover td {
+  .toolbar {
     background: $gray;
-    color: #FFF;
+    padding: .5rem;
+
+    div {
+      display: inline-block;
+      background: $orange;
+      padding: 0.5rem;
+      color: #FFF;
+      font-weight: bold;
+      border-radius: .3rem;
+      text-transform: uppercase;
+      font-size: .9rem;
+      cursor: pointer;
+
+      &:hover {
+        background: #FFF;
+        color: $orange;
+      }
+    }
+  }
+  table {
+    background: #FFF;
+    border: 1px solid $gray;
+    width: 100%;
+
+    th {
+      border-bottom: 2px solid $orange;
+      font-weight: normal;
+      text-align: left;
+      text-transform: uppercase;
+      padding: 1rem;
+      background: #FFF;
+      color: #888;
+    }
+
+    tr td {
+      border-bottom: 1px solid $gray;
+      padding: 1rem;
+      border-collapse: collapse;
+      cursor: pointer;
+    }
+    tr:nth-child(even) {
+      background: #F5F5F5;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: $gray;
+      color: #FFF;
+    }
   }
 }

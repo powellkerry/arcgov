@@ -2,27 +2,67 @@
     <h1 class="page-name">Cemetery</h1>
     <div class="body">
         <div class="left">
-            <table class="list">
-                <tr>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Availability</th>
-                </tr>
-                <tr class="row" ng-repeat="cemetery in cemeteries" ng-click="loadCemeteryMap(cemetery)">
-                    <td>{{cemetery.name}}</td>
-                    <td>{{cemetery.address}}<br/>{{cemetery.city}}, {{cemetery.state}} {{cemetery.zip}}</td>
-                    <td>{{cemetery.occupied}}/{{cemetery.capacity}}-{{cemetery.occupied/cemetery.capacity| percentage}}</td>
-                </tr>
-            </table>
+            <div class="list">
+                <div class="toolbar">
+                    <div class="add button" ng-click="showCemeteryForm()">Add</div>
+                    <div class="edit button" ng-click="showCemeteryForm(cemetery)">Edit</div>
+                    <div class="delete button">Delete</div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Capacity</th>
+                    </tr>
+                    <tr class="row" ng-repeat="cemetery in cemeteries" ng-click="loadCemeteryMap(cemetery)">
+                        <td>{{cemetery.cem_name}}</td>
+                        <td>{{cemetery.cem_street}}<br/>{{cemetery.cem_city}}, {{cemetery.cem_state}} {{cemetery.cem_zip}}</td>
+                        <td>{{cemetery.cem_capacity}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="right">
             <div class="details">
                 <div class="header">
-                    <h2>{{cemetery.name}}</h2>
+                    <h2>{{cemetery.cem_name}}</h2>
                     <input type="button" class="manage-button" value="Manage"/>
                 </div>
                 <div id="map-canvas"></div>
             </div>
+        </div>
+        <div class="popup cemetery-form-window">
+            <h2 class="title"></h2>
+            <form name="cemetery-form" class="cemetery-form" autocomplete="on">
+                <div class="form-field">
+                    <label for="cem_name">Name:</label>
+                    <input type="text" name="cem_name" id="cem_name" ng-model="cemetery.cem_name"/>
+                </div>
+                <div class="form-field">
+                    <label for="cem_street">Address:</label>
+                    <input type="text" name="cem_street" id="cem_street" ng-model="cemetery.cem_street"/>
+                </div>
+                <div class="form-field">
+                    <label for="cem_city">City:</label>
+                    <input type="text" name="cem_city" id="cem_city" ng-model="cemetery.cem_city"/>
+                </div>
+                <div class="form-field">
+                    <label for="cem_state">State:</label>
+                    <input type="text" name="cem_state" id="cem_state" ng-model="cemetery.cem_state"/>
+                </div>
+                <div class="form-field">
+                    <label for="cem_name">Zip:</label>
+                    <input type="text" name="cem_zip" id="cem_zip" ng-model="cemetery.cem_zip"/>
+                </div>
+                <div class="form-field">
+                    <label for="cem_capacity">Capacity:</label>
+                    <input type="number" name="cem_capacity" id="cem_capacity" ng-model="cemetery.cem_capacity"/>
+                </div>
+                <div class="form-buttons">
+                    <button class="submit" ng-click="submitCemeteryForm()">Submit</button>
+                    <button class="cancel" ng-click="hideCemeteryForm()">Cancel</button>
+                </div>
+            </form>
         </div>
     </div>
 </span>

@@ -19,9 +19,10 @@
     <!--Maps-->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9Ijilstg1ALi7zc5D463pLBV7hUCNPj4&sensor=false"></script>
 </head>
-<body>
+<body ng-controller="MainController">
+    <div class="mask"></div>
     <div class="site-header">
-        <img src="/styles/resources/logo.png"/>
+        <img src="/styles/resources/logo.png" ng-click="routeToMain()"/>
     </div>
     <div ng-view></div>
 </body>

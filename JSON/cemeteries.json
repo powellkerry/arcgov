@@ -1,13 +1,13 @@
 [{
-    "name": "Wellington",
-    "address": "Wellington Cemetery",
+    "name": "Wellington City Cemetery",
+    "address": "Wellington City Cemetery",
     "city": "Wellington",
     "state": "Utah",
     "zip": "84542",
     "capacity": "1300",
     "occupied": "500"
 },{
-    "name": "Pioneer",
+    "name": "Salt Lake City Cemetery",
     "address": "200 N Street",
     "city": "Salt Lake",
     "state": "Utah",

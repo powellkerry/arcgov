@@ -16,6 +16,12 @@ app.config(function($routeProvider) {
     });
 });
 
+app.controller('MainController', function($scope) {
+    $scope.routeToMain = function() {
+        window.location = '/';
+    }
+});
+
 app.controller('StatesController', function($scope, appLoadFactory) {
     $scope.init = function() {
         appLoadFactory.loadStates().success(function(data) {
