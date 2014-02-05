@@ -10,6 +10,10 @@ app.config(function($routeProvider) {
             controller: 'CemeteriesController',
             templateUrl: '/views/cemeteries.html'
         }).
+        when('/cemeteries/:cem_id', {
+            controller: 'CemeteryController',
+            templateUrl: 'views/cemetery.html'
+        }).
         when('/owners', {
             controller: 'OwnersController',
             templateUrl: '/views/owners/main.html'

@@ -3,21 +3,20 @@
   .toolbar {
     background: $gray;
     padding: .5rem;
+    color: #FFF;
+    text-transform: uppercase;
 
     div {
-      display: inline-block;
-      background: $orange;
-      padding: 0.5rem;
-      color: #FFF;
-      font-weight: bold;
-      border-radius: .3rem;
-      text-transform: uppercase;
-      font-size: .9rem;
-      cursor: pointer;
+      &.button {
+        &:hover {
+          background: #FFF;
+          color: $orange;
+        }
+      }
 
-      &:hover {
-        background: #FFF;
-        color: $orange;
+      &.search {
+        float: right;
+        padding: 0.5rem;
       }
     }
   }
@@ -48,7 +47,7 @@
     tr:last-child td {
       border-bottom: none;
     }
-    tr:hover td {
+    tr:hover td, tr.selected td {
       background: $gray;
       color: #FFF;
     }

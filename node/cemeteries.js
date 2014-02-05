@@ -13,11 +13,17 @@ exports.data = {
             });
         });
     },
-    read: function(callback) {
+    read: function(cem_id, callback) {
         var connection = db.connection.connect();
-        connection.query('SELECT * FROM arcgov.cemeteries;', function(err, rows) {
-            callback(JSON.stringify(rows));
-        });
+        if (cem_id) {
+            connection.query('SELECT * FROM arcgov.cemeteries WHERE cem_id='+cem_id+';', function(err, rows) {
+                callback(JSON.stringify(rows));
+            });
+        } else {
+            connection.query('SELECT * FROM arcgov.cemeteries;', function(err, rows) {
+                callback(JSON.stringify(rows));
+            });
+        }
     },
     update: function(data, callback) {
         var connection = db.connection.connect();

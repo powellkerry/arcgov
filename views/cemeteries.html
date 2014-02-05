@@ -7,6 +7,10 @@
                     <div class="add button" ng-click="showCemeteryForm()">Add</div>
                     <div class="edit button" ng-click="showCemeteryForm(cemetery)">Edit</div>
                     <div class="delete button" ng-click="deleteCemetery(cemetery)">Delete</div>
+                    <div class="search">
+                        <label for="search">Search:</label>
+                        <input id="search" type="search" ng-model="search"/>
+                    </div>
                 </div>
                 <table>
                     <tr>
@@ -14,7 +18,7 @@
                         <th>Location</th>
                         <th>Capacity</th>
                     </tr>
-                    <tr class="row" ng-repeat="cemetery in cemeteries" ng-click="loadCemeteryMap(cemetery)">
+                    <tr class="row" ng-repeat="cemetery in cemeteries | filter:search" ng-click="loadCemeteryMap(cemetery, $event)">
                         <td>{{cemetery.cem_name}}</td>
                         <td>{{cemetery.cem_street}}<br/>{{cemetery.cem_city}}, {{cemetery.cem_state}} {{cemetery.cem_zip}}</td>
                         <td>{{cemetery.cem_capacity}}</td>
@@ -26,7 +30,7 @@
             <div class="details">
                 <div class="header">
                     <h2>{{cemetery.cem_name}}</h2>
-                    <input type="button" class="manage-button" value="Manage"/>
+                    <div class="button" ng-click="goToManage(cemetery)">Manage</div>
                 </div>
                 <div id="map-canvas"></div>
             </div>
@@ -60,7 +64,7 @@
                 </div>
                 <div class="form-buttons">
                     <button class="submit" ng-click="submitCemeteryForm()">Submit</button>
-                    <button class="cancel" ng-click="hideCemeteryForm()">Cancel</button>
+                    <button class="cancel" ng-click="cancelCemeteryForm()">Cancel</button>
                 </div>
             </form>
         </div>

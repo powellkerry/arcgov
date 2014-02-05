@@ -3,11 +3,15 @@ var app = angular.module('arcgov');
 app.controller('CemeteriesController', function($scope, CemeteryFactory) {
     $scope.cemeteries = [];
     $scope.cemetery = {};
+    $scope.cemeteryMaster = {};
     CemeteryFactory.getCemeteries(null, function(data) {
         $scope.cemeteries = data;
     });
 
-    $scope.loadCemeteryMap = function(cemetery) {
+    $scope.loadCemeteryMap = function(cemetery, $event) {
+        $('.list .selected').removeClass('selected');
+        $($event.currentTarget).addClass('selected');
+        $scope.cemeteryMaster = angular.copy(cemetery);
         $scope.cemetery = cemetery;
         CemeteryFactory.geoCodeAddress($scope.getFullAddress(cemetery), function(data) {
             var lat = data.results[0].geometry.location.lat,
@@ -61,9 +65,18 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
         });
     }
 
+    $scope.cancelCemeteryForm = function() {
+        $scope.cemeteries[$scope.cemeteries.indexOf($scope.cemetery)] = $scope.cemeteryMaster;
+        $scope.hideCemeteryForm();
+    }
+
     $scope.hideCemeteryForm = function() {
         $('.mask').hide();
         $('.cemetery-form-window').hide();
+    }
+
+    $scope.goToManage = function(cemetery) {
+        window.location = '#/cemeteries/'+cemetery.cem_id;
     }
 });
 

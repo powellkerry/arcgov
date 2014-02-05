@@ -10,8 +10,18 @@ http.createServer(function(request, response) {
         request.url = '/index.html';
     }
     switch (request.url) {
+        case '/loadCemetery' :
+            request.on('data', function(chunk) {
+                var data = JSON.parse(chunk);
+                cemetery.data.read(data.cem_id, function(data) {
+                    response.writeHeader(200, {"Content-Type": "application/json"});
+                    response.write(data);
+                    response.end();
+                });
+            });
+            break;
         case '/loadCemeteries' :
-            cemetery.data.read(function(data) {
+            cemetery.data.read(null, function(data) {
                 response.writeHeader(200, {"Content-Type": "application/json"});
                 response.write(data);
                 response.end();
