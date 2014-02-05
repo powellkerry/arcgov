@@ -1,7 +1,7 @@
 var http = require('http'),
     mysql = require('mysql'),
-    fs=require('fs').
-    cemeteries=require('./cemeteries');
+    fs=require('fs'),
+    cemetery=require('./cemeteries');
 
 var mime = require('mime');
 
@@ -11,30 +11,39 @@ http.createServer(function(request, response) {
     }
     switch (request.url) {
         case '/loadCemeteries' :
-            var connection = mysql.createConnection({
-                host: 'localhost',
-                user: 'root',
-                password: 'arcgov',
-                database: 'arcgov'
-            });
-            connection.connect();
-            connection.query('SELECT * FROM arcgov.cemeteries', function(err, rows) {
+            cemetery.data.read(function(data) {
                 response.writeHeader(200, {"Content-Type": "application/json"});
-                response.write(JSON.stringify(rows));
+                response.write(data);
                 response.end();
             });
-            connection.end();
             break;
         case '/createCemetery' :
             request.on('data', function(chunk) {
-                var data = JSON.parse(chunk.toString());
-                console.log(cemeteries);
-                cemeteries.create(data, function() {
+                var data = JSON.parse(chunk);
+                cemetery.data.create(data, function() {
                     response.writeHeader(200, {"Content-Type": "application/JSON"});
                     response.end();
                 });
             });
             break;
+        case '/updateCemetery' :
+            request.on('data', function(chunk) {
+                var data = JSON.parse(chunk);
+                cemetery.data.update(data, function() {
+                    response.writeHeader(200, {"Content-Type": "application/JSON"});
+                    response.end();
+                })
+
+            });
+            break;
+        case '/deleteCemetery' :
+            request.on('data', function(chunk) {
+                var data = JSON.parse(chunk);
+                cemetery.data.delete(data, function() {
+                    response.writeHeader(200, {"Content-Type": "application/JSON"});
+                    response.end();
+                });
+            })
         default:
             var requestUrl = request.url.substr(1, request.url.length);
             fs.readFile(requestUrl ,function(err, html) {

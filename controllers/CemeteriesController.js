@@ -43,7 +43,7 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
     }
 
     $scope.submitCemeteryForm = function() {
-        if ($scope.cemetery.id) {
+        if ($scope.cemetery.cem_id) {
             CemeteryFactory.updateCemetery($scope.cemetery, function() {
                 $scope.hideCemeteryForm();
             });
@@ -53,6 +53,12 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
                 $scope.hideCemeteryForm();
             })
         }
+    }
+
+    $scope.deleteCemetery = function(cemetery) {
+        CemeteryFactory.deleteCemetery(cemetery, function() {
+            $scope.cemeteries.splice($scope.cemeteries.indexOf(cemetery), 1);
+        });
     }
 
     $scope.hideCemeteryForm = function() {
@@ -74,6 +80,9 @@ app.factory('CemeteryFactory', function($http) {
         },
         updateCemetery: function(cemetery, callback) {
             return $http.post('/updateCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to update cemetery')});
+        },
+        deleteCemetery: function(cemetery, callback) {
+            return $http.post('/deleteCemetery', {cem_id: cemetery.cem_id, org_id:1}).success(callback).error(function() {console.warn('Failed to delete cemetery')});
         }
     }
     return factory;
