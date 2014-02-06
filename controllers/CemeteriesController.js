@@ -30,10 +30,10 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
                 title: cemetery.cem_name
             });
         });
-    }
+    };
     $scope.getFullAddress = function(cemetery) {
         return cemetery.cem_street+', '+cemetery.cem_city+', '+cemetery.cem_state+' '+cemetery.cem_zip;
-    }
+    };
 
     $scope.showCemeteryForm = function(cemetery) {
         if (!cemetery) {
@@ -44,7 +44,7 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
         }
         $('.mask').show();
         $('.cemetery-form-window').show();
-    }
+    };
 
     $scope.submitCemeteryForm = function() {
         if ($scope.cemetery.cem_id) {
@@ -55,48 +55,48 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
             CemeteryFactory.createCemetery($scope.cemetery, function() {
                 $scope.cemeteries.push($scope.cemetery);
                 $scope.hideCemeteryForm();
-            })
+            });
         }
-    }
+    };
 
     $scope.deleteCemetery = function(cemetery) {
         CemeteryFactory.deleteCemetery(cemetery, function() {
             $scope.cemeteries.splice($scope.cemeteries.indexOf(cemetery), 1);
         });
-    }
+    };
 
     $scope.cancelCemeteryForm = function() {
         $scope.cemeteries[$scope.cemeteries.indexOf($scope.cemetery)] = $scope.cemeteryMaster;
         $scope.hideCemeteryForm();
-    }
+    };
 
     $scope.hideCemeteryForm = function() {
         $('.mask').hide();
         $('.cemetery-form-window').hide();
-    }
+    };
 
     $scope.goToManage = function(cemetery) {
         window.location = '#/cemeteries/'+cemetery.cem_id;
-    }
+    };
 });
 
 app.factory('CemeteryFactory', function($http) {
     var factory = {
         getCemeteries:  function(userId, callback) {
-            return $http.get('/loadCemeteries', userId).success(callback).error(function() {console.warn('Failed to load cemeteries')});
+            return $http.get('/loadCemeteries', userId).success(callback).error(function() {console.warn('Failed to load cemeteries');});
         },
         geoCodeAddress: function(address, callback) {
-            return $http.get('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false').success(callback).error(function() {console.warn('Geocode request failed')});
+            return $http.get('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false').success(callback).error(function() {console.warn('Geocode request failed');});
         },
         createCemetery: function(cemetery, callback) {
-            return $http.post('/createCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to add cemetery')});
+            return $http.post('/createCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to add cemetery');});
         },
         updateCemetery: function(cemetery, callback) {
-            return $http.post('/updateCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to update cemetery')});
+            return $http.post('/updateCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to update cemetery');});
         },
         deleteCemetery: function(cemetery, callback) {
-            return $http.post('/deleteCemetery', {cem_id: cemetery.cem_id, org_id:1}).success(callback).error(function() {console.warn('Failed to delete cemetery')});
+            return $http.post('/deleteCemetery', {cem_id: cemetery.cem_id, org_id:1}).success(callback).error(function() {console.warn('Failed to delete cemetery');});
         }
-    }
+    };
     return factory;
 });

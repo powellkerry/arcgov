@@ -11,4 +11,4 @@ exports.connection = {
         connection.connect();
         return connection;
     }
-}
+};

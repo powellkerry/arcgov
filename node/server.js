@@ -42,8 +42,7 @@ http.createServer(function(request, response) {
                 cemetery.data.update(data, function() {
                     response.writeHeader(200, {"Content-Type": "application/JSON"});
                     response.end();
-                })
-
+                });
             });
             break;
         case '/deleteCemetery' :
@@ -53,7 +52,8 @@ http.createServer(function(request, response) {
                     response.writeHeader(200, {"Content-Type": "application/JSON"});
                     response.end();
                 });
-            })
+            });
+            break;
         default:
             var requestUrl = request.url.substr(1, request.url.length);
             fs.readFile(requestUrl ,function(err, html) {

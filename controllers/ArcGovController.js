@@ -23,7 +23,7 @@ app.config(function($routeProvider) {
 app.controller('MainController', function($scope) {
     $scope.routeToMain = function() {
         window.location = '/';
-    }
+    };
 });
 
 app.controller('StatesController', function($scope, appLoadFactory) {
@@ -31,7 +31,7 @@ app.controller('StatesController', function($scope, appLoadFactory) {
         appLoadFactory.loadStates().success(function(data) {
             $scope.states = data;
         });
-    }
+    };
     $scope.init();
 });
 
@@ -40,7 +40,7 @@ app.factory('appLoadFactory', function($http) {
     var factory = {};
     factory.loadStates = function() {
         return $http.get('/JSON/states.json');
-    }
+    };
     return factory;
 });
 
