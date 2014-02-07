@@ -1,5 +1,188 @@
 <div>
     <h1 class="page-name">Manage Cemetery - {{cemetery.cem_name}}</h1>
+    <div class="body">
+        <div class="left">
+            <div class="list">
+                <div class="toolbar">
+                    <div class="add button" ng-click="showPlotForm()">Add</div>
+                    <div class="edit button" ng-click="showPlotForm(plot)">Edit</div>
+                    <div class="delete button" ng-click="deletePlot(plot)">Delete</div>
+                    <div class="search">
+                        <label for="search">Search:</label>
+                        <input id="search" type="search" ng-model="search"/>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Plot Address</th>
+                        <th>Plot Price</th>
+                        <th>Purchased</th>
+                        <th>Occupied</th>
+                    </tr>
+                    <tr class="row" ng-repeat="plot in plots | filter:search" ng-click="rowClick(plot, $event)">
+                        <td>{{plot.plot_address}}</td>
+                        <td>{{plot.plot_price | currency}}</td>
+                        <td>{{plot.owner_id | boolean}}</td>
+                        <td>{{plot.occupant_id | boolean}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="right">
+            <div class="details">
+                <div class="header">
+                    <h2>Owner</h2>
+                    <div class="buttons">
+                        <div class="button add" ng-if="!owner" ng-click="showOwnerForm()">Add</div>
+                        <div class="button edit" ng-if="owner" ng-click="showOwnerForm(plot, owner)">Edit</div>
+                        <div class="button remove" ng-if="owner" ng-click="removeOwner(plot, owner)">Remove</div>
+                    </div>
+                </div>
+                <div class="owner body" ng-if="owner">
+                    <div class="form-field">
+                        <label for="dt_owner_name">Name:</label>
+                        <div class="value" id="dt_owner_name">{{owner.owner_first_name}} {{owner.owner_last_name}}</div>
+                    </div>
+                    <div class="form-field">
+                        <label for="dt_owner_street">Address:</label>
+                        <div class="value" id="dt_owner_street">{{owner.owner_street}} <br/>
+                            {{owner.owner_city}},{{owner.owner_state}} {{owner.owner_zip}}</div>
+                    </div>
+                    <div class="form-field">
+                        <label for="dt_owner_billing_street">Billing Address:</label>
+                        <div class="value" id="dt_owner_billing_street">{{owner.owner_billing_street}} <br/>
+                            {{owner.owner_billing_city}},{{owner.owner_billing_state}} {{owner.owner_billing_zip}}</div>
+                    </div>
+                </div>
+                <div class="header">
+                    <h2>Occupant</h2>
+                    <div class="buttons">
+                        <div class="button add" ng-if="!occupant" ng-click="showOccupantForm()">Add</div>
+                        <div class="button edit" ng-if="occupant" ng-click="showOccupantForm(plot, occupant)">Edit</div>
+                        <div class="button remove" ng-if="occupant" ng-click="removeOccupant(plot, occupant)">Remove</div>
+                    </div>
+                </div>
+                <div class="occupants body" ng-if="occupant">
+                    <div class="form-field">
+                        <label for="dt_occupant_name">Name:</label>
+                        <div class="value" id="dt_occupant_name">{{occupant.occupant_first_name}} {{occupant.occupant_last_name}}</div>
+                    </div>
+                    <div class="form-field">
+                        <label for="dt_occupant_gender">Gender:</label>
+                        <div class="value" id="dt_occupant_gender">{{occupant.occupant_gender}}</div>
+                    </div>
+                    <div class="form-field">
+                        <label for="dt_occupant_birth_date">Birth Date:</label>
+                        <div class="value" id="dt_occupant_birth_date">{{occupant.occupant_birth_date | date}}</div>
+                    </div>
+                    <div class="form-field">
+                        <label for="dt_occupant_death_date">Death Date:</label>
+                        <div class="value" id="dt_occupant_death_date">{{occupant.occupant_death_date | date}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="popup plot-form-window">
+            <h2 class="title"></h2>
+            <form name="plot-form" class="plot-form" autocomplete="on">
+                <div class="form-field">
+                    <label for="plot_address">Address:</label>
+                    <input type="text" name="plot_address" id="plot_address" ng-model="plot.plot_address"/>
+                </div>
+                <div class="form-field">
+                    <label for="plot_price">Price:</label>
+                    <input type="text" name="plot_price" id="plot_price" ng-model="plot.plot_price"/>
+                </div>
+                <div class="form-buttons">
+                    <button class="submit" ng-click="submitPlotForm()">Submit</button>
+                    <button class="cancel" ng-click="cancelPlotForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
 
+        <div class="popup owner-form-window">
+            <h2 class="title">Owner</h2>
+            <form name="owner-form" class="owner-form" autocomplete="on">
+                <div class="form-field">
+                    <label for="owner_first_name">First Name:</label>
+                    <input type="text" name="owner_first_name" id="owner_first_name" ng-model="owner.owner_first_name"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_last_name">Last Name:</label>
+                    <input type="text" name="owner_last_name" id="owner_last_name" ng-model="owner.owner_last_name"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_street">Street:</label>
+                    <input type="text" name="owner_street" id="owner_street" ng-model="owner.owner_street"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_city">City:</label>
+                    <input type="text" name="owner_city" id="owner_city" ng-model="owner.owner_city"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_city">State:</label>
+                    <input type="text" name="owner_state" id="owner_state" ng-model="owner.owner_state"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_city">Zip:</label>
+                    <input type="text" name="owner_zip" id="owner_zip" ng-model="owner.owner_zip"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_billing_street">Billing Street:</label>
+                    <input type="text" name="owner_billing_street" id="owner_billing_street" ng-model="owner.owner_billing_street"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_billing_city">Billing City:</label>
+                    <input type="text" name="owner_billing_city" id="owner_billing_city" ng-model="owner.owner_billing_city"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_billing_city">Billing State:</label>
+                    <input type="text" name="owner_billing_state" id="owner_billing_state" ng-model="owner.owner_billing_state"/>
+                </div>
+                <div class="form-field">
+                    <label for="owner_billing_city">Billing Zip:</label>
+                    <input type="text" name="owner_billing_zip" id="owner_billing_zip" ng-model="owner.owner_billing_zip"/>
+                </div>
+
+                <div class="form-buttons">
+                    <button class="submit" ng-click="submitOwnerForm()">Submit</button>
+                    <button class="cancel" ng-click="cancelOwnerForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="popup occupant-form-window">
+            <h2 class="title">Occupant</h2>
+            <form name="occupant-form" class="occupant-form" autocomplete="on">
+                <div class="form-field">
+                    <label for="occupant_first_name">First Name:</label>
+                    <input type="text" name="occupant_first_name" id="occupant_first_name" ng-model="occupant.occupant_first_name"/>
+                </div>
+                <div class="form-field">
+                    <label for="occupant_last_name">Last Name:</label>
+                    <input type="text" name="occupant_last_name" id="occupant_last_name" ng-model="occupant.occupant_last_name"/>
+                </div>
+                <div class="form-field">
+                    <label>Gender:</label>
+                    <input type="radio" name="occupant_gender" id="occupant_gender_f" ng-model="occupant.occupant_gender" value="F"/>
+                    <label for="occupant_gender_f">Female</label>
+                    <input type="radio" name="occupant_gender" id="occupant_gender_m" ng-model="occupant.occupant_gender" value="M"/>
+                    <label for="occupant_gender_m">Male</label>
+                </div>
+                <div class="form-field">
+                    <label for="occupant_birth_date">Birth Date:</label>
+                    <input type="date" name="occupant_birth_date" id="occupant_birth_date" ng-model="occupant.occupant_birth_date"/>
+                </div>
+                <div class="form-field">
+                    <label for="occupant_death_date">Death Date:</label>
+                    <input type="date" name="occupant_death_date" id="occupant_death_date" ng-model="occupant.occupant_death_date"/>
+                </div>
+                <div class="form-buttons">
+                    <button class="submit" ng-click="submitOccupantForm()">Submit</button>
+                    <button class="cancel" ng-click="cancelOccupantForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

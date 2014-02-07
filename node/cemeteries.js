@@ -18,10 +18,12 @@ exports.data = {
         if (cem_id) {
             connection.query('SELECT * FROM arcgov.cemeteries WHERE cem_id='+cem_id+';', function(err, rows) {
                 callback(JSON.stringify(rows));
+                connection.end();
             });
         } else {
             connection.query('SELECT * FROM arcgov.cemeteries;', function(err, rows) {
                 callback(JSON.stringify(rows));
+                connection.end();
             });
         }
     },
@@ -44,6 +46,7 @@ exports.data = {
         var connection = db.connection.connect();
         connection.query('DELETE FROM arcgov.cemeteries WHERE cem_id='+data.cem_id+' AND org_id='+data.org_id+';', function(err) {
             callback();
+            connection.end();
         });
     }
 };

@@ -30,6 +30,9 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
                 title: cemetery.cem_name
             });
         });
+        $('.right').css({
+            display: 'inline-block'
+        });
     };
     $scope.getFullAddress = function(cemetery) {
         return cemetery.cem_street+', '+cemetery.cem_city+', '+cemetery.cem_state+' '+cemetery.cem_zip;
