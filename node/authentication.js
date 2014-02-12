@@ -28,11 +28,24 @@ exports.data = {
 
                     connection.query(sql, function(err) {
                         callback();
+                        connection.end();
                     });
 
                 });
 
             });
+        });
+    },
+    login: function(email, callback) {
+        var connection = db.connection.connect(),
+            sql = "SELECT password FROM arcgov.passwords p JOIN arcgov.users u ON(p.user_id=u.user_id) WHERE u.email='"+email+"'";
+
+        connection.query(sql, function(err, rows) {
+            if (rows.length > 0) {
+                callback(JSON.stringify({password: rows[0].password}));
+            } else {
+                callback(JSON.stringify({password: 'Password does not exist'}));
+            }
         });
     }
 }

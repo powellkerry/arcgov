@@ -22,6 +22,15 @@ http.createServer(function(request, response) {
                     JSONResponse.send(response);
                 });
             });
+            break;
+        case '/login':
+            request.on('data', function(chunk) {
+                var data = JSON.parse(chunk);
+                authentication.data.login(data.email, function(data) {
+                    JSONResponse.send(response, data);
+                });
+            });
+            break;
         case '/loadCemetery' :
             request.on('data', function(chunk) {
                 var data = JSON.parse(chunk);
