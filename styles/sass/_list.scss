@@ -47,9 +47,13 @@
     tr:last-child td {
       border-bottom: none;
     }
-    tr:hover td, tr.selected td {
+    tr:hover td {
+      background: #F5E6CE;
+    }
+    tr.selected td {
       background: $orange;
       color: #FFF;
     }
+
   }
 }

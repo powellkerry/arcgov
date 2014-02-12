@@ -1,0 +1,17 @@
+<div class="main">
+    <h1>Log In</h1>
+    <form>
+        <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="password" name="email" id="email" ng-model="user.email"/>
+        </div>
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" ng-model="user.password"/>
+        </div>
+        <div class="form-buttons">
+            <button class="submit" ng-click="submitLoginForm()">Submit</button>
+            <button class="cancel" ng-click="cancelLoginForm()">Cancel</button>
+        </div>
+    </form>
+</div>

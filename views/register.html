@@ -1,0 +1,33 @@
+<div class="main">
+    <h1 class="title">Register</h1>
+    <form name="plot-form" class="plot-form" autocomplete="on">
+        <div class="form-field">
+            <label for="first_name">First Name:</label>
+            <input type="text" name="first_name" id="first_name" ng-model="user.first_name" required/>
+        </div>
+        <div class="form-field">
+            <label for="last_name">Last Name:</label>
+            <input type="text" name="last_name" id="last_name" ng-model="user.last_name" required/>
+        </div>
+        <div class="form-field">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" ng-model="user.email" required/>
+        </div>
+        <div class="form-field">
+            <label for="email_confirm">Confirm Email:</label>
+            <input type="email" name="email_confirm" id="email_confirm" ng-model="user.email_confirm" required/>
+        </div>
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" ng-model="user.password" ng-value="{{user.password}}" required/>
+        </div>
+        <div class="form-field">
+            <label for="password_confirm">Confirm Password:</label>
+            <input type="password" name="password_confirm" id="password_confirm" ng-model="user.password_confirm" ng-value="{{user.password_confirm}}" required/>
+        </div>
+        <div class="form-buttons">
+            <button class="submit" ng-click="submitRegisterForm()">Submit</button>
+            <button class="cancel" ng-click="cancelRegisterForm()">Cancel</button>
+        </div>
+    </form>
+</div>

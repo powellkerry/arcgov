@@ -1,10 +1,18 @@
-var app = angular.module('arcgov', ['ngRoute']);
+var app = angular.module('arcgov', ['ngRoute','angular-md5']);
 
 
 app.config(function($routeProvider) {
     $routeProvider.when('/', {
             controller: 'HomeController',
             templateUrl: '/views/home.html'
+        }).
+        when('/register', {
+            controller: 'RegisterController',
+            templateUrl: '/views/register.html'
+        }).
+        when('/login', {
+            controller: 'LoginController',
+            templateUrl: '/views/login.html'
         }).
         when('/cemeteries', {
             controller: 'CemeteriesController',
@@ -24,6 +32,12 @@ app.controller('MainController', function($scope) {
     $scope.routeToMain = function() {
         window.location = '/';
     };
+    $scope.routeToRegister = function() {
+        window.location = '/#/register'
+    }
+    $scope.routeToLogIn = function() {
+        window.location = '/#/login'
+    }
 });
 
 app.controller('StatesController', function($scope, appLoadFactory) {

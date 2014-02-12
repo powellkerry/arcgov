@@ -5,6 +5,7 @@
     <script type="text/javascript" src="/libraries/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="/libraries/angular.js"></script>
     <script type="text/javascript" src="/libraries/angular-route.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-md5/angular-md5.min.js"></script>
 
     <!--<script type="text/javascript" src="/build/arcgov.min.js"></script>-->
 
@@ -13,6 +14,8 @@
     <script type="text/javascript" src="/controllers/HomeController.js"></script>
     <script type="text/javascript" src="/controllers/CemeteriesController.js"></script>
     <script type="text/javascript" src="/controllers/CemeteryController.js"></script>
+    <script type="text/javascript" src="/controllers/RegisterController.js"></script>
+    <script type="text/javascript" src="/controllers/LoginController.js"></script>
     <title>arcgov</title>
 
     <!--Filters-->
@@ -25,6 +28,7 @@
     <div class="mask"></div>
     <div class="site-header">
         <img src="/styles/resources/logo.png" ng-click="routeToMain()"/>
+        <span class="authentication"><a href="" ng-click="routeToLogIn()">Log In</a>|<a href="" ng-click="routeToRegister()">Register</a></span>
     </div>
     <div ng-view></div>
 </body>

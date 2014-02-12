@@ -1,6 +1,10 @@
 $orange :  #DF9C2F;
 $gray : #949698;
 
+::selection {
+  background: $orange;
+}
+
 html {
   height: 100% !important;
   width: 100% !important;
@@ -36,6 +40,22 @@ h2 {
 
   img {
     cursor: pointer;
+  }
+
+  .authentication {
+    float: right;
+    margin: 1rem;
+
+    a {
+      margin: 1rem;
+      color: $orange;
+      font-size: 1.2rem;
+
+      &:hover {
+        color: $gray;
+        text-decoration: none;
+      }
+    }
   }
 }
 .page-name {
@@ -114,6 +134,41 @@ select {
     }
   }
 }
+
+.form-field {
+  margin: 1rem;
+
+  label {
+    width: 9rem;
+    display: inline-block;
+  }
+}
+.form-buttons {
+  text-align: right;
+  padding: 1rem;
+
+  .submit {
+    background: $orange;
+    padding: .5rem;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: .3rem;
+  }
+  .cancel {
+    background: $gray;
+    color: #FFF;
+    padding: .5rem;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: .3rem;
+  }
+}
+
 .popup {
   background: #FFF;
   display: none;
@@ -132,40 +187,17 @@ select {
     width: 100%;
   }
 
-  .form-field {
-    margin: 1rem;
-
-    label {
-      width: 6rem;
-      display: inline-block;
-    }
-  }
-  .form-buttons {
-    text-align: right;
-    padding: 1rem;
-
-    .submit {
-      background: $orange;
-      padding: .5rem;
-      border: none;
-      color: #FFF;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: .3rem;
-    }
-    .cancel {
-      background: $gray;
-      color: #FFF;
-      padding: .5rem;
-      border: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      cursor: pointer;
-      border-radius: .3rem;
-    }
-  }
 }
 .body {
   padding: 2rem;
+}
+.main {
+  background: #FFF;
+  width: 25rem;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid $gray;
+}
+input.ng-invalid {
+  background: #E2A791;
 }

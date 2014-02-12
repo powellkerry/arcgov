@@ -5,7 +5,8 @@ var http = require('http'),
     cemetery = require('./cemeteries'),
     plots = require('./plots'),
     owners = require('./owners'),
-    occupants = require('./occupants');
+    occupants = require('./occupants'),
+    authentication = require('./authentication');
 
 var mime = require('mime');
 
@@ -14,6 +15,13 @@ http.createServer(function(request, response) {
         request.url = '/index.html';
     }
     switch (request.url) {
+        case '/register' :
+            request.on('data', function(chunk) {
+                var data = JSON.parse(chunk);
+                authentication.data.createUser(data.user, function() {
+                    JSONResponse.send(response);
+                });
+            });
         case '/loadCemetery' :
             request.on('data', function(chunk) {
                 var data = JSON.parse(chunk);
