@@ -117,7 +117,6 @@ http.createServer(function(request, response) {
         request.url = '/index.html';
     }
     if (authentication.data.restrictedUrls.indexOf(request.url) == -1) {
-        console.log('NO AUTH');
         switch (request.url) {
             case '/register' :
                 request.on('data', function(chunk) {

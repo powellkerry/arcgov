@@ -9,7 +9,7 @@ exports.data = {
             connection.query('INSERT INTO arcgov.cemeteries(cem_id,cem_name,cem_street,cem_city,cem_state,cem_zip,cem_capacity,org_id)' +
                 'VALUES('+insertString+');', function(err) {
                 connection.end();
-                callback(err);
+                callback(JSON.stringify({cem_id:id}));
             });
         });
     },

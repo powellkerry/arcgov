@@ -174,43 +174,43 @@ app.controller('CemeteryController', function($scope, $routeParams, ManageCemete
 app.factory('ManageCemeteryFactory', function($http) {
     var factory = {
         getCemetery: function(cem_id, callback) {
-            return $http.post('/loadCemetery', {cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to load cemetery');});
+            return $http.post('/loadCemetery', {cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         loadPlots: function(cem_id, callback) {
-            return $http.post('/loadPlots', {cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to load cemetery plots');});
+            return $http.post('/loadPlots', {cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         createPlot: function(plot, cem_id, callback) {
-            return $http.post('/createPlot', {plot: plot, cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to create plot');});
+            return $http.post('/createPlot', {plot: plot, cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         updatePlot: function(plot, cem_id, callback) {
-            return $http.post('/updatePlot', {plot: plot, cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to update plot');});
+            return $http.post('/updatePlot', {plot: plot, cem_id: cem_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         deletePlot: function(plot_id, callback) {
-            return $http.post('/deletePlot', {plot_id: plot_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to delete plot');});
+            return $http.post('/deletePlot', {plot_id: plot_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         loadOwner: function(owner_id, callback) {
-            return $http.post('loadOwner', {owner_id: owner_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to load owner');});
+            return $http.post('loadOwner', {owner_id: owner_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         createOwner: function(owner, plot, callback) {
-            return $http.post('/createOwner', {owner: owner, plot:plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to create owner');});
+            return $http.post('/createOwner', {owner: owner, plot:plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         updateOwner: function(owner, callback) {
-            return $http.post('/updateOwner', {owner:owner, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to update owner');});
+            return $http.post('/updateOwner', {owner:owner, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         deleteOwner: function(owner_id, callback) {
-            return $http.post('/deleteOwner', {owner_id: owner_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to delete owner');});
+            return $http.post('/deleteOwner', {owner_id: owner_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         loadOccupant: function(occupant_id, callback) {
-            return $http.post('/loadOccupant', {occupant_id: occupant_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to load occupant');});
+            return $http.post('/loadOccupant', {occupant_id: occupant_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         createOccupant: function(occupant, plot, callback) {
-            return $http.post('/createOccupant', {occupant: occupant, plot: plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to add occupant');});
+            return $http.post('/createOccupant', {occupant: occupant, plot: plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         updateOccupant: function(occupant, plot, callback) {
-            return $http.post('/updateOccupant', {occupant: occupant, plot: plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to update occupant');});
+            return $http.post('/updateOccupant', {occupant: occupant, plot: plot, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         },
         deleteOccupant: function(occupant_id, callback) {
-            return $http.post('/deleteOccupant', {occupant_id: occupant_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to remove occupant');});
+            return $http.post('/deleteOccupant', {occupant_id: occupant_id, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function(data, status) {arcgov.errors.handleError(data, status);});
         }
     };
     return factory;

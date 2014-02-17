@@ -204,3 +204,14 @@ select {
 input.ng-invalid {
   background: #E2A791;
 }
+.error {
+  position: absolute;
+  left: 40%;
+  top: 6.3rem;
+  background: #D87070;
+  padding: 1rem;
+  color: #FFF;
+  border-radius: 0 0 .5rem .5rem;
+  opacity: .8;
+  display: none;
+}

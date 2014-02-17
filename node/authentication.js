@@ -4,8 +4,7 @@ exports.data = {
     authenticate: function(url, auth, callback) {
         if (!auth) {
             callback(false);
-        }
-        if (this.restrictedUrls.indexOf(url) != -1) {
+        } else if (this.restrictedUrls.indexOf(url) != -1) {
             this.login(auth.user.email, function(password) {
                 var loginTimeLimit = new Date();
                 loginTimeLimit = loginTimeLimit.setMinutes(loginTimeLimit.getMinutes() - 20);

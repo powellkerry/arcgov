@@ -1,5 +1,8 @@
 var app = angular.module('arcgov', ['ngRoute','angular-md5']);
 
+arcgov = {
+
+};
 
 app.config(function($routeProvider) {
     $routeProvider.when('/', {
