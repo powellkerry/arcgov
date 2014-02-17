@@ -2,7 +2,7 @@ var app = angular.module('arcgov');
 
 app.controller('HomeController', function($scope, $sce, HomeFactory) {
     $scope.archives = [];
-    HomeFactory.getArchives(null, function(data) {
+    HomeFactory.getArchives(function(data) {
         $scope.archives = data;
     });
     $scope.getArchiveDescription = function(archive) {
@@ -15,8 +15,8 @@ app.controller('HomeController', function($scope, $sce, HomeFactory) {
 
 app.factory('HomeFactory', function($http) {
     var factory = {
-        getArchives:  function(userId, callback) {
-            return $http.get('/JSON/archives.json', userId).success(callback).error(function() {console.warn('Failed to load archives');});
+        getArchives:  function(callback) {
+            return $http.get('/JSON/archives.json', {auth: arcgov.auth}).success(callback).error(function() {console.warn('Failed to load archives');});
         }
     };
     return factory;

@@ -33,11 +33,11 @@ app.controller('MainController', function($scope) {
         window.location = '/';
     };
     $scope.routeToRegister = function() {
-        window.location = '/#/register'
-    }
+        window.location = '/#/register';
+    };
     $scope.routeToLogIn = function() {
-        window.location = '/#/login'
-    }
+        window.location = '/#/login';
+    };
 });
 
 app.controller('StatesController', function($scope, appLoadFactory) {

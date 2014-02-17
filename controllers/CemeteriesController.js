@@ -4,7 +4,7 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
     $scope.cemeteries = [];
     $scope.cemetery = {};
     $scope.cemeteryMaster = {};
-    CemeteryFactory.getCemeteries(null, function(data) {
+    CemeteryFactory.getCemeteries(function(data) {
         $scope.cemeteries = data;
     });
 
@@ -85,20 +85,20 @@ app.controller('CemeteriesController', function($scope, CemeteryFactory) {
 
 app.factory('CemeteryFactory', function($http) {
     var factory = {
-        getCemeteries:  function(userId, callback) {
-            return $http.get('/loadCemeteries', userId).success(callback).error(function() {console.warn('Failed to load cemeteries');});
+        getCemeteries:  function(callback) {
+            return $http.post('/loadCemeteries', {auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to load cemeteries');});
         },
         geoCodeAddress: function(address, callback) {
             return $http.get('http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=false').success(callback).error(function() {console.warn('Geocode request failed');});
         },
         createCemetery: function(cemetery, callback) {
-            return $http.post('/createCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to add cemetery');});
+            return $http.post('/createCemetery', {cemetery:cemetery, org_id: 1, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to add cemetery');});
         },
         updateCemetery: function(cemetery, callback) {
-            return $http.post('/updateCemetery', {cemetery:cemetery, org_id: 1}).success(callback).error(function() {console.warn('Failed to update cemetery');});
+            return $http.post('/updateCemetery', {cemetery:cemetery, org_id: 1, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to update cemetery');});
         },
         deleteCemetery: function(cemetery, callback) {
-            return $http.post('/deleteCemetery', {cem_id: cemetery.cem_id, org_id:1}).success(callback).error(function() {console.warn('Failed to delete cemetery');});
+            return $http.post('/deleteCemetery', {cem_id: cemetery.cem_id, org_id:1, auth: JSON.parse(localStorage.getItem('auth'))}).success(callback).error(function() {console.warn('Failed to delete cemetery');});
         }
     };
     return factory;

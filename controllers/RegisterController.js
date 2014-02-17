@@ -7,7 +7,6 @@ app.controller('RegisterController', function($scope, RegisterFactory, md5) {
             if (isValid) {
                 $scope.user.password = md5.createHash($scope.user.password);
                 $scope.user.password_confirm = md5.createHash($scope.user.password_confirm);
-                console.log($scope.user)
                 RegisterFactory.register($scope.user, function() {
                     window.location = '/';
                 });
@@ -15,7 +14,7 @@ app.controller('RegisterController', function($scope, RegisterFactory, md5) {
                 alert('Not valid.');
             }
         });
-    }
+    };
 
     $scope.validate = function(callback) {
         var valid = true;
@@ -29,9 +28,7 @@ app.controller('RegisterController', function($scope, RegisterFactory, md5) {
             valid = false;
         }
         return callback(valid);
-    }
-
-
+    };
 });
 
 app.factory('RegisterFactory', function($http) {
@@ -40,5 +37,5 @@ app.factory('RegisterFactory', function($http) {
            $http.post('/register', {user: user}).success(callback).error(function() {console.log('Failed to register user');});
         }
 
-    }
-})
+    };
+});
