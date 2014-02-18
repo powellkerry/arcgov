@@ -18,7 +18,7 @@
                         <th>Location</th>
                         <th>Capacity</th>
                     </tr>
-                    <tr class="row" ng-repeat="cemetery in cemeteries | filter:search" ng-click="loadCemeteryMap(cemetery, $event)">
+                    <tr class="row" ng-repeat="cemetery in cemeteries | filter:search" ng-click="cemeteryClick(cemetery, $event)">
                         <td>{{cemetery.cem_name}}</td>
                         <td>{{cemetery.cem_street}}<br/>{{cemetery.cem_city}}, {{cemetery.cem_state}} {{cemetery.cem_zip}}</td>
                         <td>{{cemetery.cem_capacity}}</td>
@@ -32,6 +32,19 @@
                     <h2>{{cemetery.cem_name}}</h2>
                     <div class="buttons">
                         <div class="button" ng-click="goToManage(cemetery)">Manage</div>
+                    </div>
+                </div>
+                <div class="media">
+                    <div class="item" ng-repeat="mediaItem in media" ng-click="mediaClick(mediaItem)">
+                        <img ng-if="mediaItem.file_type == 'image'" src="{{mediaItem.media_location}}" class="thumb"/>
+                        <video src="{{mediaItem.media_location}}" ng-if="mediaItem.file_type == 'video'" class="thumb"/>
+                    </div>
+                    <div class="spotlight" ng-model="selectedMediaItem">
+                        <div class="close" ng-click="closeMedia()">Close</div>
+                        <img ng-if="selectedMediaItem.file_type == 'image'" ng-src="{{selectedMediaItem.media_location}}"/>
+                        <video controls ng-if="selectedMediaItem.file_type == 'video'">
+                            <source type="video/mp4" ng-src="{{selectedMediaItem.media_location}}">
+                        </video>
                     </div>
                 </div>
                 <div id="map-canvas"></div>

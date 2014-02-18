@@ -1,11 +1,12 @@
-var app = angular.module('arcgov', ['ngRoute','angular-md5']);
+var app = angular.module('arcgov', ['ngRoute', 'angular-md5']);
 
 arcgov = {
 
 };
 
-app.config(function($routeProvider) {
-    $routeProvider.when('/', {
+app.config(function ($routeProvider) {
+    $routeProvider.
+        when('/', {
             controller: 'HomeController',
             templateUrl: '/views/home.html'
         }).
@@ -28,24 +29,24 @@ app.config(function($routeProvider) {
         when('/owners', {
             controller: 'OwnersController',
             templateUrl: '/views/owners/main.html'
-    });
+        });
 });
 
-app.controller('MainController', function($scope) {
-    $scope.routeToMain = function() {
+app.controller('MainController', function ($scope) {
+    $scope.routeToMain = function () {
         window.location = '/';
     };
-    $scope.routeToRegister = function() {
+    $scope.routeToRegister = function () {
         window.location = '/#/register';
     };
-    $scope.routeToLogIn = function() {
+    $scope.routeToLogIn = function () {
         window.location = '/#/login';
     };
 });
 
-app.controller('StatesController', function($scope, appLoadFactory) {
-    $scope.init = function() {
-        appLoadFactory.loadStates().success(function(data) {
+app.controller('StatesController', function ($scope, appLoadFactory) {
+    $scope.init = function () {
+        appLoadFactory.loadStates().success(function (data) {
             $scope.states = data;
         });
     };
@@ -53,9 +54,9 @@ app.controller('StatesController', function($scope, appLoadFactory) {
 });
 
 
-app.factory('appLoadFactory', function($http) {
+app.factory('appLoadFactory', function ($http) {
     var factory = {};
-    factory.loadStates = function() {
+    factory.loadStates = function () {
         return $http.get('/JSON/states.json');
     };
     return factory;
